@@ -101,14 +101,7 @@
 		842A5274255B153A004BD604 /* iTunesTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				842A5275255B153A004BD604 /* AppDelegate.swift */,
-				842A5277255B153A004BD604 /* SceneDelegate.swift */,
-				842A5279255B153A004BD604 /* ViewController.swift */,
-				842A527B255B153A004BD604 /* Main.storyboard */,
-				842A5281255B153A004BD604 /* Assets.xcassets */,
-				842A5283255B153A004BD604 /* LaunchScreen.storyboard */,
-				842A5286255B153A004BD604 /* Info.plist */,
-				842A527E255B153A004BD604 /* iTunesTestApp.xcdatamodeld */,
+				84C91977255B18A300730D5E /* SupportedFiles */,
 			);
 			path = iTunesTestApp;
 			sourceTree = "<group>";
@@ -129,6 +122,21 @@
 				842A529C255B153B004BD604 /* Info.plist */,
 			);
 			path = iTunesTestAppUITests;
+			sourceTree = "<group>";
+		};
+		84C91977255B18A300730D5E /* SupportedFiles */ = {
+			isa = PBXGroup;
+			children = (
+				842A5283255B153A004BD604 /* LaunchScreen.storyboard */,
+				842A5286255B153A004BD604 /* Info.plist */,
+				842A527E255B153A004BD604 /* iTunesTestApp.xcdatamodeld */,
+				842A5275255B153A004BD604 /* AppDelegate.swift */,
+				842A5277255B153A004BD604 /* SceneDelegate.swift */,
+				842A5279255B153A004BD604 /* ViewController.swift */,
+				842A527B255B153A004BD604 /* Main.storyboard */,
+				842A5281255B153A004BD604 /* Assets.xcassets */,
+			);
+			path = SupportedFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
