@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 struct Music {
     
     var trackName = ""
     var artistName = ""
     var primaryGenreName = ""
-    var artworkUrl60 = ""
+    var albumImageURL = ""
 }

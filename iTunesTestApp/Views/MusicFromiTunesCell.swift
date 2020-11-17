@@ -1,14 +1,15 @@
 //
-//  MusicFromiTunesTableViewCell.swift
+//  MusicFromiTunesCell.swift
 //  iTunesTestApp
 //
-//  Created by admin on 12.11.2020.
+//  Created by admin on 17.11.2020.
 //
 
 import UIKit
 
-class MusicFromiTunesTableViewCell: UITableViewCell {
+class MusicFromiTunesCell: UITableViewCell {
     
+    @IBOutlet weak var parentView: UIView!
     @IBOutlet weak var soundImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
@@ -17,8 +18,15 @@ class MusicFromiTunesTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
-        
+        setCellSettings()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        soundImage.image = nil
+        titleLabel.text = ""
+        artistLabel.text = ""
+        genreLabel.text = ""
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,5 +34,8 @@ class MusicFromiTunesTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func setCellSettings() {
+        soundImage.layer.cornerRadius = 10
+    }
 }

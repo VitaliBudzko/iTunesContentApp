@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func setupRootViewController() {
-        window?.rootViewController = MusicFromiTunesVC.storyboardInstance()
+        window?.rootViewController = MusicTabBarController()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupRootViewController() {
         let window = UIWindow()
-        window.rootViewController = MusicFromiTunesVC.storyboardInstance()
+        window.rootViewController = MusicTabBarController()
     }
 
     // MARK: UISceneSession Lifecycle

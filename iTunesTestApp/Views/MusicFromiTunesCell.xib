@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MusicFromiTunesCell" customModule="iTunesTestApp" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" rowHeight="120" id="KGk-i7-Jjw" customClass="MusicFromiTunesCell" customModule="iTunesTestApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rmp-wl-QwU">
+                        <rect key="frame" x="16" y="10" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="7Pj-Jl-fsf"/>
+                            <constraint firstAttribute="width" constant="100" id="Nbl-bG-wry"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frozen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUj-Hl-bgW">
+                        <rect key="frame" x="146" y="10" width="252" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Idina Menzel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vG-Il-WIQ">
+                        <rect key="frame" x="146" y="48.5" width="96" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soundtrack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tE-mk-GxV">
+                        <rect key="frame" x="146" y="88" width="88" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="9vG-Il-WIQ" firstAttribute="leading" secondItem="rmp-wl-QwU" secondAttribute="trailing" constant="30" id="5cy-i3-68o"/>
+                    <constraint firstItem="kUj-Hl-bgW" firstAttribute="leading" secondItem="rmp-wl-QwU" secondAttribute="trailing" constant="30" id="Bzk-x1-oMG"/>
+                    <constraint firstItem="rmp-wl-QwU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Now-X1-mVx"/>
+                    <constraint firstItem="kUj-Hl-bgW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Ssv-86-vYm"/>
+                    <constraint firstAttribute="trailing" secondItem="kUj-Hl-bgW" secondAttribute="trailing" constant="16" id="VZP-LP-GaH"/>
+                    <constraint firstItem="3tE-mk-GxV" firstAttribute="leading" secondItem="rmp-wl-QwU" secondAttribute="trailing" constant="30" id="j8r-dC-Yog"/>
+                    <constraint firstItem="rmp-wl-QwU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jWc-LV-EOl"/>
+                    <constraint firstItem="9vG-Il-WIQ" firstAttribute="top" secondItem="kUj-Hl-bgW" secondAttribute="bottom" constant="18" id="poM-XL-6aR"/>
+                    <constraint firstAttribute="bottom" secondItem="3tE-mk-GxV" secondAttribute="bottom" constant="11" id="r7r-qG-hL4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="artistLabel" destination="9vG-Il-WIQ" id="Vxn-GO-3OQ"/>
+                <outlet property="genreLabel" destination="3tE-mk-GxV" id="54i-7K-sJa"/>
+                <outlet property="parentView" destination="H2p-sc-9uM" id="II7-Rw-RJk"/>
+                <outlet property="soundImage" destination="rmp-wl-QwU" id="d8P-ox-EBp"/>
+                <outlet property="titleLabel" destination="kUj-Hl-bgW" id="1VX-rf-XTS"/>
+            </connections>
+            <point key="canvasLocation" x="-114" y="87"/>
+        </tableViewCell>
+    </objects>
+</document>
