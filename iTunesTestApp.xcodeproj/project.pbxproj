@@ -11,7 +11,6 @@
 		842A5278255B153A004BD604 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A5277255B153A004BD604 /* SceneDelegate.swift */; };
 		842A527A255B153A004BD604 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A5279255B153A004BD604 /* ViewController.swift */; };
 		842A527D255B153A004BD604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842A527B255B153A004BD604 /* Main.storyboard */; };
-		842A5280255B153A004BD604 /* iTunesTestApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842A527E255B153A004BD604 /* iTunesTestApp.xcdatamodeld */; };
 		842A5282255B153A004BD604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842A5281255B153A004BD604 /* Assets.xcassets */; };
 		842A5285255B153A004BD604 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842A5283255B153A004BD604 /* LaunchScreen.storyboard */; };
 		842A5290255B153B004BD604 /* iTunesTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A528F255B153B004BD604 /* iTunesTestAppTests.swift */; };
@@ -21,6 +20,10 @@
 		843479CF2564187800BDEDD1 /* MusicTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843479CE2564187800BDEDD1 /* MusicTabBarController.swift */; };
 		84446C112564375C005A007F /* MusicFromiTunesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84446C0F2564375C005A007F /* MusicFromiTunesCell.swift */; };
 		84446C122564375C005A007F /* MusicFromiTunesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84446C102564375C005A007F /* MusicFromiTunesCell.xib */; };
+		84446C2325659768005A007F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84446C2225659768005A007F /* CoreDataManager.swift */; };
+		84446C292565B353005A007F /* MusicData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84446C272565B353005A007F /* MusicData+CoreDataClass.swift */; };
+		84446C2A2565B353005A007F /* MusicData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84446C282565B353005A007F /* MusicData+CoreDataProperties.swift */; };
+		84446C342565B75B005A007F /* iTunesTestApp.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 842A527E255B153A004BD604 /* iTunesTestApp.xcdatamodeld */; };
 		84676A67255DA55800A7904B /* MusicFromiTunesVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84676A66255DA55800A7904B /* MusicFromiTunesVC.storyboard */; };
 		84676A74255DA5A200A7904B /* MusicFromiTunesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84676A73255DA5A200A7904B /* MusicFromiTunesVC.swift */; };
 		84676A7D255DA70700A7904B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84676A7C255DA70700A7904B /* Constants.swift */; };
@@ -67,6 +70,9 @@
 		843479CE2564187800BDEDD1 /* MusicTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTabBarController.swift; sourceTree = "<group>"; };
 		84446C0F2564375C005A007F /* MusicFromiTunesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFromiTunesCell.swift; sourceTree = "<group>"; };
 		84446C102564375C005A007F /* MusicFromiTunesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicFromiTunesCell.xib; sourceTree = "<group>"; };
+		84446C2225659768005A007F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		84446C272565B353005A007F /* MusicData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		84446C282565B353005A007F /* MusicData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		84676A66255DA55800A7904B /* MusicFromiTunesVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MusicFromiTunesVC.storyboard; sourceTree = "<group>"; };
 		84676A73255DA5A200A7904B /* MusicFromiTunesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFromiTunesVC.swift; sourceTree = "<group>"; };
 		84676A7C255DA70700A7904B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				84E877EC255B25CA007E2760 /* RequestManager.swift */,
+				84446C2225659768005A007F /* CoreDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -186,6 +193,8 @@
 		84E877E3255B2424007E2760 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84446C272565B353005A007F /* MusicData+CoreDataClass.swift */,
+				84446C282565B353005A007F /* MusicData+CoreDataProperties.swift */,
 				84676A8C255DB48F00A7904B /* Music.swift */,
 			);
 			path = Model;
@@ -323,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84446C342565B75B005A007F /* iTunesTestApp.xcdatamodeld in Resources */,
 				842A5285255B153A004BD604 /* LaunchScreen.storyboard in Resources */,
 				84446C122564375C005A007F /* MusicFromiTunesCell.xib in Resources */,
 				84676A67255DA55800A7904B /* MusicFromiTunesVC.storyboard in Resources */,
@@ -353,13 +363,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84446C2A2565B353005A007F /* MusicData+CoreDataProperties.swift in Sources */,
 				84676A74255DA5A200A7904B /* MusicFromiTunesVC.swift in Sources */,
 				842A527A255B153A004BD604 /* ViewController.swift in Sources */,
 				842A5276255B153A004BD604 /* AppDelegate.swift in Sources */,
+				84446C292565B353005A007F /* MusicData+CoreDataClass.swift in Sources */,
 				843479CF2564187800BDEDD1 /* MusicTabBarController.swift in Sources */,
 				842A5278255B153A004BD604 /* SceneDelegate.swift in Sources */,
 				84E877ED255B25CA007E2760 /* RequestManager.swift in Sources */,
-				842A5280255B153A004BD604 /* iTunesTestApp.xcdatamodeld in Sources */,
+				84446C2325659768005A007F /* CoreDataManager.swift in Sources */,
 				84E877E8255B2528007E2760 /* UIViewController.swift in Sources */,
 				84676A8D255DB48F00A7904B /* Music.swift in Sources */,
 				843479C7256417D100BDEDD1 /* StoredMusicVC.swift in Sources */,

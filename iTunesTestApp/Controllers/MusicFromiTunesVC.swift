@@ -45,8 +45,14 @@ class MusicFromiTunesVC: UIViewController {
     
     func getImages(imageView: UIImageView, imageURL: String) {
         RequestManager.getImageFromiTunes(imageURL: imageURL) { (image) in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 imageView.image = image
+                for (index, track) in self!.tracks.enumerated() {
+                    if track.albumImageURL == imageURL {
+                        self?.tracks[index].albumImage = image
+                        break
+                    }
+                }
             }
         }
     }

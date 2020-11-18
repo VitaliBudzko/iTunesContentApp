@@ -22,12 +22,15 @@ class RequestManager {
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
                 if let musicCollection = json["results"] as? [Dictionary<String,Any>] {
+                    print("json = \(musicCollection)")
                     for item in musicCollection {
                         let song = Music(trackName: item["trackName"] as! String,
                                          artistName: item["artistName"] as! String,
                                          primaryGenreName: item["primaryGenreName"] as! String,
-                                         albumImageURL: item["artworkUrl60"] as! String
+                                         albumImageURL: item["artworkUrl60"] as! String,
+                                         trackId: item["trackId"] as! Int
                         )
+                        print("song = \(song)")
                         songs.append(song)
                     }
                 }

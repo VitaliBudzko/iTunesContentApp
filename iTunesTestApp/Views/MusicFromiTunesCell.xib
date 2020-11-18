@@ -63,7 +63,7 @@
                 <outlet property="soundImage" destination="rmp-wl-QwU" id="d8P-ox-EBp"/>
                 <outlet property="titleLabel" destination="kUj-Hl-bgW" id="1VX-rf-XTS"/>
             </connections>
-            <point key="canvasLocation" x="-114" y="87"/>
+            <point key="canvasLocation" x="-114.49275362318842" y="86.383928571428569"/>
         </tableViewCell>
     </objects>
 </document>

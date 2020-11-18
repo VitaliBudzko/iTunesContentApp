@@ -14,4 +14,6 @@ struct Music {
     var artistName = ""
     var primaryGenreName = ""
     var albumImageURL = ""
+    var trackId = 0
+    var albumImage = UIImage()
 }
