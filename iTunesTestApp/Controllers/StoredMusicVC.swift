@@ -18,9 +18,27 @@ class StoredMusicVC: UITableViewController {
         tableView.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
-        
+        tableView.reloadData()
+    }
+    
+    func makeDeleteAlert(musicToDelete: Int) {
+        let alertVC = UIAlertController(title: "Delete the track!", message: "Do you want to delete the track?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .default) { [weak self] (action) in
+            CoreDataManager.shared.deleteMusicData(musicToDelete: musicToDelete)
+            CoreDataManager.shared.storedMusic.removeAll()
+            CoreDataManager.shared.fetchMusicData { [weak self] (music) in
+                CoreDataManager.shared.storedMusic = music
+                self?.tableView.reloadData()
+            }
+        }
+        cancelAction.setValue(UIColor.green, forKey: "titleTextColor")
+        deleteAction.setValue(UIColor.red, forKey: "titleTextColor")
+        alertVC.addAction(cancelAction)
+        alertVC.addAction(deleteAction)
+        present(alertVC, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
@@ -30,16 +48,15 @@ class StoredMusicVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return CoreDataManager.shared.storedMusic.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TABLE_VIEW_CELL_ID, for: indexPath) as! MusicFromiTunesCell
-        //cell.titleLabel.text = tracks[indexPath.row].trackName
-        //cell.artistLabel.text = tracks[indexPath.row].artistName
-        //cell.genreLabel.text = tracks[indexPath.row].primaryGenreName
-        //getImages(imageView: cell.soundImage, imageURL: tracks[indexPath.row].albumImageURL)
-        //return cell
+        cell.titleLabel.text = CoreDataManager.shared.storedMusic[indexPath.row].trackName
+        cell.artistLabel.text = CoreDataManager.shared.storedMusic[indexPath.row].artistName
+        cell.genreLabel.text = CoreDataManager.shared.storedMusic[indexPath.row].primaryGenreName
+        cell.imageView?.image = UIImage(data: CoreDataManager.shared.storedMusic[indexPath.row].albumImage!, scale: 0.6)
         return cell
     }
 
@@ -48,7 +65,8 @@ class StoredMusicVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .normal, title: "Delete") { (action, index, completionHandler) in
+        let deleteAction = UIContextualAction(style: .normal, title: "Delete") { [weak self] (action, index, completionHandler) in
+            self?.makeDeleteAlert(musicToDelete: indexPath.row)
             print("data deleted")
         }
         deleteAction.backgroundColor = .red

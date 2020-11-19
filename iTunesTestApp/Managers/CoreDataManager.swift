@@ -19,7 +19,7 @@ class CoreDataManager {
     var musicData: MusicData? = nil
     var storedMusic = [MusicData]()
 
-    func saveMusic(musicToSave: Music, completion: COMPLETION_HANDLER) {
+    func saveMusicData(musicToSave: Music, completion: COMPLETION_HANDLER) {
         musicData = MusicData(context: managedContext)
         if let image = musicToSave.albumImage.pngData() {
             musicData?.albumImage = image
