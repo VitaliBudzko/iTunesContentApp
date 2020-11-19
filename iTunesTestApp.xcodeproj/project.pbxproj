@@ -24,6 +24,7 @@
 		84446C292565B353005A007F /* MusicData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84446C272565B353005A007F /* MusicData+CoreDataClass.swift */; };
 		84446C2A2565B353005A007F /* MusicData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84446C282565B353005A007F /* MusicData+CoreDataProperties.swift */; };
 		84446C342565B75B005A007F /* iTunesTestApp.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 842A527E255B153A004BD604 /* iTunesTestApp.xcdatamodeld */; };
+		84446C4225670D50005A007F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84446C4125670D50005A007F /* UIImage.swift */; };
 		84676A67255DA55800A7904B /* MusicFromiTunesVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84676A66255DA55800A7904B /* MusicFromiTunesVC.storyboard */; };
 		84676A74255DA5A200A7904B /* MusicFromiTunesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84676A73255DA5A200A7904B /* MusicFromiTunesVC.swift */; };
 		84676A7D255DA70700A7904B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84676A7C255DA70700A7904B /* Constants.swift */; };
@@ -73,6 +74,7 @@
 		84446C2225659768005A007F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		84446C272565B353005A007F /* MusicData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		84446C282565B353005A007F /* MusicData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		84446C4125670D50005A007F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		84676A66255DA55800A7904B /* MusicFromiTunesVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MusicFromiTunesVC.storyboard; sourceTree = "<group>"; };
 		84676A73255DA5A200A7904B /* MusicFromiTunesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFromiTunesVC.swift; sourceTree = "<group>"; };
 		84676A7C255DA70700A7904B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				84E877E7255B2528007E2760 /* UIViewController.swift */,
+				84446C4125670D50005A007F /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				842A5276255B153A004BD604 /* AppDelegate.swift in Sources */,
 				84446C292565B353005A007F /* MusicData+CoreDataClass.swift in Sources */,
 				843479CF2564187800BDEDD1 /* MusicTabBarController.swift in Sources */,
+				84446C4225670D50005A007F /* UIImage.swift in Sources */,
 				842A5278255B153A004BD604 /* SceneDelegate.swift in Sources */,
 				84E877ED255B25CA007E2760 /* RequestManager.swift in Sources */,
 				84446C2325659768005A007F /* CoreDataManager.swift in Sources */,

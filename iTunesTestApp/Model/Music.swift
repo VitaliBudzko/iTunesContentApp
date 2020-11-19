@@ -16,4 +16,5 @@ struct Music {
     var albumImageURL = ""
     var trackId = 0
     var albumImage = UIImage()
+    var isSaved = false
 }

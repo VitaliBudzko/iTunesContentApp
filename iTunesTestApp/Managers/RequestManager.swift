@@ -24,12 +24,19 @@ class RequestManager {
                 if let musicCollection = json["results"] as? [Dictionary<String,Any>] {
                     print("json = \(musicCollection)")
                     for item in musicCollection {
-                        let song = Music(trackName: item["trackName"] as! String,
+                        var song = Music(trackName: item["trackName"] as! String,
                                          artistName: item["artistName"] as! String,
                                          primaryGenreName: item["primaryGenreName"] as! String,
                                          albumImageURL: item["artworkUrl60"] as! String,
                                          trackId: item["trackId"] as! Int
                         )
+                        CoreDataManager.shared.fetchTrackWithID(trackID: song.trackId) { (done) in
+                            if done {
+                                song.isSaved = true
+                            } else {
+                                song.isSaved = false
+                            }
+                        }
                         print("song = \(song)")
                         songs.append(song)
                     }

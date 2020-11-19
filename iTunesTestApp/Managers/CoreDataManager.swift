@@ -21,7 +21,8 @@ class CoreDataManager {
 
     func saveMusicData(musicToSave: Music, completion: COMPLETION_HANDLER) {
         musicData = MusicData(context: managedContext)
-        if let image = musicToSave.albumImage.pngData() {
+        let imageWithGrayScale = musicToSave.albumImage.makeGrayScale(imageToUpdate: musicToSave.albumImage)
+        if let image = imageWithGrayScale.pngData() {
             musicData?.albumImage = image
         }
         musicData?.albumImageURL = musicToSave.albumImageURL
@@ -47,6 +48,23 @@ class CoreDataManager {
             onSuccess(music)
         } catch {
             print(error.localizedDescription)
+        }
+    }
+    
+    func fetchTrackWithID(trackID: Int, completion: COMPLETION_HANDLER) {
+        let request = NSFetchRequest <NSFetchRequestResult>(entityName: "MusicData")
+        request.predicate = NSPredicate(format: "trackId == %i", trackID)
+        request.returnsObjectsAsFaults = false
+        do {
+            let music = try managedContext.fetch(request) as! [MusicData]
+            guard !music.isEmpty else {
+                completion(false)
+                return
+            }
+            completion(true)
+        } catch {
+            print(error.localizedDescription)
+            completion(false)
         }
     }
     

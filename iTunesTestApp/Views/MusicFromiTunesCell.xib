@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -42,6 +43,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Soundtrack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2M-qC-YyA">
+                        <rect key="frame" x="323.5" y="90" width="74.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" systemColor="systemRedColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
@@ -50,16 +57,19 @@
                     <constraint firstItem="rmp-wl-QwU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Now-X1-mVx"/>
                     <constraint firstItem="kUj-Hl-bgW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Ssv-86-vYm"/>
                     <constraint firstAttribute="trailing" secondItem="kUj-Hl-bgW" secondAttribute="trailing" constant="16" id="VZP-LP-GaH"/>
+                    <constraint firstAttribute="trailing" secondItem="R2M-qC-YyA" secondAttribute="trailing" constant="16" id="brp-qS-f5d"/>
                     <constraint firstItem="3tE-mk-GxV" firstAttribute="leading" secondItem="rmp-wl-QwU" secondAttribute="trailing" constant="30" id="j8r-dC-Yog"/>
                     <constraint firstItem="rmp-wl-QwU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jWc-LV-EOl"/>
                     <constraint firstItem="9vG-Il-WIQ" firstAttribute="top" secondItem="kUj-Hl-bgW" secondAttribute="bottom" constant="18" id="poM-XL-6aR"/>
                     <constraint firstAttribute="bottom" secondItem="3tE-mk-GxV" secondAttribute="bottom" constant="11" id="r7r-qG-hL4"/>
+                    <constraint firstItem="R2M-qC-YyA" firstAttribute="centerY" secondItem="3tE-mk-GxV" secondAttribute="centerY" id="wWQ-06-mvu"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="artistLabel" destination="9vG-Il-WIQ" id="Vxn-GO-3OQ"/>
                 <outlet property="genreLabel" destination="3tE-mk-GxV" id="54i-7K-sJa"/>
+                <outlet property="isSavedLabel" destination="R2M-qC-YyA" id="oZb-Vv-wUj"/>
                 <outlet property="parentView" destination="H2p-sc-9uM" id="II7-Rw-RJk"/>
                 <outlet property="soundImage" destination="rmp-wl-QwU" id="d8P-ox-EBp"/>
                 <outlet property="titleLabel" destination="kUj-Hl-bgW" id="1VX-rf-XTS"/>
@@ -67,4 +77,9 @@
             <point key="canvasLocation" x="-114.49275362318842" y="86.383928571428569"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

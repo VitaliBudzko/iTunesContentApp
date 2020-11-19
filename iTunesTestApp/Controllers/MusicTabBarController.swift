@@ -12,9 +12,8 @@ class MusicTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        modalPresentationStyle = .fullScreen
+        setScreenSettings()
         setViewControllers()
-        tabBarController?.selectedIndex = 0
     }
     
     override func viewDidLayoutSubviews() {
@@ -23,7 +22,7 @@ class MusicTabBarController: UITabBarController {
     }
     
     // Add view controllers into container
-    func setViewControllers() {
+    private func setViewControllers() {
         let musicFromiTunesVC = MusicFromiTunesVC.storyboardInstance()
         musicFromiTunesVC.title = "All Music"
         musicFromiTunesVC.tabBarItem.image = #imageLiteral(resourceName: "Get loan").withRenderingMode(.alwaysOriginal)
@@ -42,8 +41,13 @@ class MusicTabBarController: UITabBarController {
         }
     }
     
+    private func setScreenSettings() {
+        modalPresentationStyle = .fullScreen
+        tabBarController?.selectedIndex = 0
+    }
+    
     // Change tab bar settings
-    func setTabBarSettings() {
+    private func setTabBarSettings() {
         tabBar.tintColor = UIColor.green
         tabBar.clipsToBounds = true
     }

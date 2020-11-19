@@ -13,9 +13,7 @@ class StoredMusicVC: UITableViewController {
         super.viewDidLoad()
 
         // Register table view cell class from nib
-        let cellNib = UINib(nibName: "MusicFromiTunesCell", bundle: nil)
-        self.tableView.register(cellNib, forCellReuseIdentifier: TABLE_VIEW_CELL_ID)
-        tableView.reloadData()
+        setTableViewCell()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -23,7 +21,12 @@ class StoredMusicVC: UITableViewController {
         tableView.reloadData()
     }
     
-    func makeDeleteAlert(musicToDelete: Int) {
+    private func setTableViewCell() {
+        let cellNib = UINib(nibName: "MusicFromiTunesCell", bundle: nil)
+        self.tableView.register(cellNib, forCellReuseIdentifier: TABLE_VIEW_CELL_ID)
+    }
+    
+    private func makeDeleteAlert(musicToDelete: Int) {
         let alertVC = UIAlertController(title: "Delete the track!", message: "Do you want to delete the track?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { [weak self] (action) in
@@ -56,7 +59,8 @@ class StoredMusicVC: UITableViewController {
         cell.titleLabel.text = CoreDataManager.shared.storedMusic[indexPath.row].trackName
         cell.artistLabel.text = CoreDataManager.shared.storedMusic[indexPath.row].artistName
         cell.genreLabel.text = CoreDataManager.shared.storedMusic[indexPath.row].primaryGenreName
-        cell.imageView?.image = UIImage(data: CoreDataManager.shared.storedMusic[indexPath.row].albumImage!, scale: 0.6)
+        cell.isSavedLabel.isHidden = true
+        cell.imageView?.image = UIImage(data: CoreDataManager.shared.storedMusic[indexPath.row].albumImage!, scale: 1.2)
         return cell
     }
 

@@ -19,13 +19,10 @@ class MusicFromiTunesVC: UIViewController {
         super.viewDidLoad()
 
         // Delegates
-        tableView.dataSource = self
-        tableView.delegate = self
-        searchField.delegate = self
+        setDelegates()
         
         // Register table view cell class from nib
-        let cellNib = UINib(nibName: "MusicFromiTunesCell", bundle: nil)
-        self.tableView.register(cellNib, forCellReuseIdentifier: TABLE_VIEW_CELL_ID)
+        setTableViewCell()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,8 +38,19 @@ class MusicFromiTunesVC: UIViewController {
         }
     }
     
+    private func setTableViewCell() {
+        let cellNib = UINib(nibName: "MusicFromiTunesCell", bundle: nil)
+        self.tableView.register(cellNib, forCellReuseIdentifier: TABLE_VIEW_CELL_ID)
+    }
+    
+    private func setDelegates() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        searchField.delegate = self
+    }
+    
     // MARK: - Get data from iTunes
-    func getiTunesData(searchRequest: String) {
+    private func getiTunesData(searchRequest: String) {
         RequestManager.getDataFromiTunes(searchString: searchRequest) { [weak self] (music) in
             DispatchQueue.main.async { [weak self] in
                 self?.tracks = music
@@ -51,7 +59,7 @@ class MusicFromiTunesVC: UIViewController {
         }
     }
     
-    func getImages(imageView: UIImageView, imageURL: String) {
+    private func getImages(imageView: UIImageView, imageURL: String) {
         RequestManager.getImageFromiTunes(imageURL: imageURL) { (image) in
             DispatchQueue.main.async { [weak self] in
                 imageView.image = image
@@ -64,14 +72,22 @@ class MusicFromiTunesVC: UIViewController {
         }
     }
     
-    func makeSaveAlert() {
-        let alertVC = UIAlertController(title: "Saved!", message: "The track was saved!", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-            CoreDataManager.shared.storedMusic.removeAll()
-            CoreDataManager.shared.fetchMusicData { (music) in
-                CoreDataManager.shared.storedMusic = music
-                print("data from core data = \(CoreDataManager.shared.storedMusic)")
+    private func makeSaveAlert(isSavedTrack: Bool) {
+        var alertVC = UIAlertController()
+        var okAction = UIAlertAction()
+        if !isSavedTrack {
+            alertVC = UIAlertController(title: "Saved!", message: "The track was saved!", preferredStyle: .alert)
+            okAction = UIAlertAction(title: "Ok", style: .default) { [weak self] (action) in
+                CoreDataManager.shared.storedMusic.removeAll()
+                CoreDataManager.shared.fetchMusicData { (music) in
+                    CoreDataManager.shared.storedMusic = music
+                    print("data from core data = \(CoreDataManager.shared.storedMusic)")
+                    self?.tableView.reloadData()
+                }
             }
+        } else {
+            alertVC = UIAlertController(title: "You can't save the track!", message: "The track is already saved!", preferredStyle: .alert)
+            okAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         }
         okAction.setValue(UIColor.green, forKey: "titleTextColor")
         alertVC.addAction(okAction)
@@ -91,6 +107,7 @@ extension MusicFromiTunesVC: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = tracks[indexPath.row].trackName
         cell.artistLabel.text = tracks[indexPath.row].artistName
         cell.genreLabel.text = tracks[indexPath.row].primaryGenreName
+        cell.setIsSaveLabelSettings(isSaved: tracks[indexPath.row].isSaved)
         getImages(imageView: cell.soundImage, imageURL: tracks[indexPath.row].albumImageURL)
         return cell
     }
@@ -101,12 +118,16 @@ extension MusicFromiTunesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let saveAction = UIContextualAction(style: .normal, title: "Save") { [weak self] (action, index, completionHandler) in
-            CoreDataManager.shared.saveMusicData(musicToSave: self!.tracks[indexPath.row]) { [weak self] (done) in
-                if done {
-                    self?.makeSaveAlert()
+            if self!.tracks[indexPath.row].isSaved {
+                self?.makeSaveAlert(isSavedTrack: self!.tracks[indexPath.row].isSaved)
+            } else {
+                CoreDataManager.shared.saveMusicData(musicToSave: self!.tracks[indexPath.row]) { [weak self] (done) in
+                    if done {
+                        self?.makeSaveAlert(isSavedTrack: self!.tracks[indexPath.row].isSaved)
+                        self!.tracks[indexPath.row].isSaved = true
+                    }
                 }
             }
-            print("data saved")
         }
         saveAction.backgroundColor = .green
         return UISwipeActionsConfiguration(actions: [saveAction])
