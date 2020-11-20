@@ -41,6 +41,7 @@ class StoredMusicVC: UITableViewController {
         deleteAction.setValue(UIColor.red, forKey: "titleTextColor")
         alertVC.addAction(cancelAction)
         alertVC.addAction(deleteAction)
+        addSystemSound(soundID: 1021)
         present(alertVC, animated: true, completion: nil)
     }
 
@@ -71,7 +72,6 @@ class StoredMusicVC: UITableViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "Delete") { [weak self] (action, index, completionHandler) in
             self?.makeDeleteAlert(musicToDelete: indexPath.row)
-            print("data deleted")
         }
         deleteAction.backgroundColor = .red
         return UISwipeActionsConfiguration(actions: [deleteAction])

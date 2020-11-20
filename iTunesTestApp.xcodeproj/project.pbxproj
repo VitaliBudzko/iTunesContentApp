@@ -131,10 +131,7 @@
 		842A5274255B153A004BD604 /* iTunesTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				844CDFED25630F56005152EB /* Managers */,
-				84E877E3255B2424007E2760 /* Model */,
-				84E877E4255B2433007E2760 /* Views */,
-				84E877E5255B2442007E2760 /* Controllers */,
+				84446C582567E8DB005A007F /* MVC */,
 				84E877E6255B24EB007E2760 /* Extensions */,
 				84676A7B255DA6C100A7904B /* Utilities */,
 				84C91977255B18A300730D5E /* SupportedFiles */,
@@ -158,6 +155,34 @@
 				842A529C255B153B004BD604 /* Info.plist */,
 			);
 			path = iTunesTestAppUITests;
+			sourceTree = "<group>";
+		};
+		84446C582567E8DB005A007F /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				84E877E3255B2424007E2760 /* Model */,
+				84E877E4255B2433007E2760 /* Views */,
+				84E877E5255B2442007E2760 /* Controllers */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		84446C592567E940005A007F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				84676A66255DA55800A7904B /* MusicFromiTunesVC.storyboard */,
+				843479B92564176600BDEDD1 /* StoredMusicVC.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		84446C5A2567E952005A007F /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				84446C0F2564375C005A007F /* MusicFromiTunesCell.swift */,
+				84446C102564375C005A007F /* MusicFromiTunesCell.xib */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		844CDFED25630F56005152EB /* Managers */ = {
@@ -195,6 +220,7 @@
 		84E877E3255B2424007E2760 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				844CDFED25630F56005152EB /* Managers */,
 				84446C272565B353005A007F /* MusicData+CoreDataClass.swift */,
 				84446C282565B353005A007F /* MusicData+CoreDataProperties.swift */,
 				84676A8C255DB48F00A7904B /* Music.swift */,
@@ -205,8 +231,8 @@
 		84E877E4255B2433007E2760 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				84446C0F2564375C005A007F /* MusicFromiTunesCell.swift */,
-				84446C102564375C005A007F /* MusicFromiTunesCell.xib */,
+				84446C5A2567E952005A007F /* TableViewCells */,
+				84446C592567E940005A007F /* Storyboards */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,9 +242,7 @@
 			children = (
 				843479CE2564187800BDEDD1 /* MusicTabBarController.swift */,
 				84676A73255DA5A200A7904B /* MusicFromiTunesVC.swift */,
-				84676A66255DA55800A7904B /* MusicFromiTunesVC.storyboard */,
 				843479C6256417D100BDEDD1 /* StoredMusicVC.swift */,
-				843479B92564176600BDEDD1 /* StoredMusicVC.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

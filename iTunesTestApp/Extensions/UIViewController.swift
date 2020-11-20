@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 extension UIViewController {
     
@@ -18,5 +19,10 @@ extension UIViewController {
         } else {
             fatalError("Fail create instance \(String.init(describing: self))")
         }
+    }
+    
+    func addSystemSound(soundID: Int32) {
+        let sound = SystemSoundID(soundID)
+        AudioServicesPlaySystemSound(sound)
     }
 }

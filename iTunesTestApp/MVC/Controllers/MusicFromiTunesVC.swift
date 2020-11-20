@@ -34,7 +34,6 @@ class MusicFromiTunesVC: UIViewController {
         CoreDataManager.shared.storedMusic.removeAll()
         CoreDataManager.shared.fetchMusicData { (music) in
             CoreDataManager.shared.storedMusic = music
-            print("data from core data = \(CoreDataManager.shared.storedMusic)")
         }
     }
     
@@ -81,7 +80,6 @@ class MusicFromiTunesVC: UIViewController {
                 CoreDataManager.shared.storedMusic.removeAll()
                 CoreDataManager.shared.fetchMusicData { (music) in
                     CoreDataManager.shared.storedMusic = music
-                    print("data from core data = \(CoreDataManager.shared.storedMusic)")
                     self?.tableView.reloadData()
                 }
             }

@@ -44,7 +44,6 @@ class CoreDataManager {
         request.returnsObjectsAsFaults = true
         do {
             let music = try managedContext.fetch(request) as! [MusicData]
-            print("fetched music data = \(music)")
             onSuccess(music)
         } catch {
             print(error.localizedDescription)
