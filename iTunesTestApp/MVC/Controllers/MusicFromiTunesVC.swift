@@ -10,6 +10,7 @@ import UIKit
 class MusicFromiTunesVC: UIViewController {
 
     let defaultRequest = "music"
+    var request = ""
     var tracks = [Music]()
     
     @IBOutlet weak var searchField: UISearchBar!
@@ -27,8 +28,8 @@ class MusicFromiTunesVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        // Get default data fromiTunes
-        getiTunesData(searchRequest: defaultRequest)
+        // Get default data from iTunes
+        requestiTunesData()
         
         // Get data from core data
         CoreDataManager.shared.storedMusic.removeAll()
@@ -46,6 +47,13 @@ class MusicFromiTunesVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         searchField.delegate = self
+    }
+    
+    private func requestiTunesData() {
+        if request.isEmpty {
+            request = defaultRequest
+        }
+        getiTunesData(searchRequest: request)
     }
     
     // MARK: - Get data from iTunes
@@ -136,13 +144,12 @@ extension MusicFromiTunesVC: UISearchBarDelegate {
     
     // MARK: - Search bar delegate methods
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        var request = ""
         searchBar.showsCancelButton = searchText.isEmpty ? false : true
-        if searchText.isEmpty {
-            request = defaultRequest
-        } else {
-            request = searchText
-        }
-        getiTunesData(searchRequest: request)
+        request = searchText
+    }
+   
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        requestiTunesData()
+        searchField.endEditing(true)
     }
 }

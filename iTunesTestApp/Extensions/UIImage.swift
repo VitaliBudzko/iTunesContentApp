@@ -11,9 +11,9 @@ import UIKit
 extension UIImage {
     
     func makeGrayScale(imageToUpdate: UIImage) -> UIImage {
-        let colorImage = CIImage(image: imageToUpdate)!
-        let blackAndWhiteImage = colorImage.applyingFilter("CIColorControls", parameters: ["inputSaturation": 0, "inputContrast": 1])
-        let resultImage = UIImage(ciImage: blackAndWhiteImage)
+        let colorImage = CIImage(image: imageToUpdate)
+        let blackAndWhiteImage = colorImage?.applyingFilter("CIColorControls", parameters: ["inputSaturation": 0, "inputContrast": 1])
+        let resultImage = UIImage(ciImage: blackAndWhiteImage ?? CIImage())
         return resultImage
     }
 }
