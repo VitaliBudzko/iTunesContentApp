@@ -62,10 +62,27 @@ class MusicFromiTunesVC: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.tracks = music
                 self?.tableView.reloadData()
+                self?.getImages() // New decision
             }
         }
     }
     
+    // New decision
+    private func getImages() {
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            for (index, track) in self!.tracks.enumerated() {
+                RequestManager.getImageFromiTunes(imageURL: track.albumImageURL) { (image) in
+                   self?.tracks[index].albumImage = image
+                }
+            }
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    
+    // Old decision
+    /*
     private func getImages(imageView: UIImageView, imageURL: String) {
         RequestManager.getImageFromiTunes(imageURL: imageURL) { (image) in
             DispatchQueue.main.async { [weak self] in
@@ -78,6 +95,7 @@ class MusicFromiTunesVC: UIViewController {
             }
         }
     }
+ */
     
     private func makeSaveAlert(isSavedTrack: Bool) {
         var alertVC = UIAlertController()
@@ -114,7 +132,14 @@ extension MusicFromiTunesVC: UITableViewDelegate, UITableViewDataSource {
         cell.artistLabel.text = tracks[indexPath.row].artistName
         cell.genreLabel.text = tracks[indexPath.row].primaryGenreName
         cell.setIsSaveLabelSettings(isSaved: tracks[indexPath.row].isSaved)
-        getImages(imageView: cell.soundImage, imageURL: tracks[indexPath.row].albumImageURL)
+        
+        // New decision
+        DispatchQueue.main.async {
+            cell.soundImage.image = self.tracks[indexPath.row].albumImage
+        }
+        
+        // Old decision
+        // getImages(imageView: cell.soundImage, imageURL: tracks[indexPath.row].albumImageURL)
         return cell
     }
     
